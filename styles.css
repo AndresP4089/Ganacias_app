@@ -5,9 +5,10 @@ body{
 }
 
 .container{
-    max-width:700px;
-    margin:auto;
-    padding:30px 20px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    padding:20px;
 }
 
 h1{
@@ -40,21 +41,18 @@ h1{
     margin:8px 0 0 0;
 }
 
-.boton{
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:10px;
-    background:#3b82f6;
+button{
+    background:#4285c8;
     color:white;
-    font-size:15px;
-    font-weight:bold;
+    border:none;
+    padding:12px;
+    border-radius:8px;
+    font-size:14px;
     cursor:pointer;
-    transition:0.2s;
 }
 
-.boton:hover{
-    background:#2563eb;
+button:hover{
+    background:#357ab7;
 }
 
 .tabla{
@@ -82,4 +80,28 @@ h1{
 
 .tabla tr:hover{
     background:#f9fbfd;
+}
+
+.oculto{
+    display:none;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin: 2%;
+    gap:10px;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+input{
+    width: 90%;
+    padding:20px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:14px;
 }

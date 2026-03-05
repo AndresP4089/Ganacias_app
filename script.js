@@ -1,27 +1,15 @@
 let ventas = []
 
+// Capturar el formulario
+const form = document.getElementById("formVenta")
+// Crear evento formulario
+form.addEventListener("submit", agregarVenta)
+// Capturar botón
 const boton = document.getElementById("nuevaVenta")
-
-boton.addEventListener("click", nuevaVenta)
-
-function nuevaVenta(){
-
-    const producto = String(prompt("Nombre Producto"))
-    const precio = Number(prompt("Precio de venta"))
-    const cantidad = Number(prompt("Cantidad"))
-    const costo = Number(prompt("Costo unitario"))
-
-    ventas.push({
-        precio: precio,
-        cantidad: cantidad,
-        costo: costo,
-        producto: producto
-    })
-
-    actualizarResumen()
-    actualizarTabla()
-
-}
+// Crear evento botón
+boton.addEventListener("click", () => {
+    form.classList.toggle("oculto")
+})
 
 function actualizarResumen(){
 
@@ -68,4 +56,26 @@ function actualizarTabla(){
 
     tbody.innerHTML = html
 
+}
+
+function agregarVenta(e){
+    // Evita que recargue la pagina
+    e.preventDefault()
+    
+    const producto = document.getElementById("producto").value
+    const precio = Number(document.getElementById("precio").value)
+    const cantidad = Number(document.getElementById("cantidad").value)
+    const costo = Number(document.getElementById("costo").value)
+
+    ventas.push({
+        producto: producto,
+        precio: precio,
+        cantidad: cantidad,
+        costo: costo
+    })
+
+    actualizarResumen()
+    actualizarTabla()
+
+    form.reset()
 }

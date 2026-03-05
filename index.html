@@ -26,8 +26,21 @@
                     <h2>Costos</h2>
                 </div>
             </div>
+
             <button id="nuevaVenta" class="boton" type="button">Nueva venta</button>
 
+            <form id="formVenta" class="formulario oculto">
+                <input type="text" id="producto" placeholder="Producto" required>
+
+                <input type="number" id="precio" placeholder="Precio venta" step="0.01" required>
+
+                <input type="number" id="cantidad" placeholder="Cantidad" required>
+
+                <input type="number" id="costo" placeholder="Costo unitario" step="0.01" required>
+
+                <button type="submit">Agregar venta</button>
+            </form>
+            
             <h2>Ventas</h2>
 
             <table class="tabla">
