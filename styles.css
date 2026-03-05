@@ -82,6 +82,14 @@ button:hover{
     background:#f9fbfd;
 }
 
+.tabla-responsive {
+    overflow-x: auto; /* permite scroll horizontal */
+    -webkit-overflow-scrolling: touch; /* suave en iOS */
+}
+.tabla {
+    min-width: 600px; /* opcional: asegura ancho mínimo para no romper celdas */
+}
+
 .oculto{
     display:none;
 }
