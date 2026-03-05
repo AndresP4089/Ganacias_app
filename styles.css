@@ -57,12 +57,14 @@ button:hover{
 
 .tabla{
     width:100%;
+    max-width: 100%;
     margin-top:20px;
     border-collapse:collapse;
     background:white;
     border-radius:10px;
     overflow:hidden;
     box-shadow:0 2px 8px rgba(0,0,0,0.05);
+    box-sizing: border-box;
 }
 
 .tabla th{
