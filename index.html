@@ -12,12 +12,15 @@
             <div class="cards">
                 <div class="card">
                     <h1>Ganancias</h1>
-                    <p id="ganancias">$2'000.000</p>
+                    <p id="gananciaTotal">$0</p>
                 </div>
             </div>
 
             <form id="formVenta">
-                <select id="producto"></select>
+                <div class="buscador-producto">
+                    <input type="text" id="buscarProducto" placeholder="Buscar producto..." autocomplete="off">
+                    <div id="listaProductos" class="lista-productos"></div>
+                </div>
 
                 <input type="number" id="cantidad" placeholder="Cantidad" required>
 
@@ -41,9 +44,9 @@
                 </table>
             </div>
 
-        </div>
+            <button id="exportarVentas" class="">Exportar ventas</button>
 
-        <button id="exportarVentas">Exportar ventas</button>
+        </div>
 
         <script src="script.js"></script>
     </body>
