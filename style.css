@@ -12,10 +12,10 @@ body{
 }
 
 .card{
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    align-items: center;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    align-items:center;
     flex:1;
     background:white;
     padding:20px;
@@ -24,13 +24,13 @@ body{
 }
 
 .card h1{
-    font-size: clamp(20px, 10vw, 100px);
+    font-size:clamp(20px, 10vw, 100px);
     color:#383737;
     margin:0;
 }
 
 .card p{
-    font-size: clamp(20px, 8vw, 80px);
+    font-size:clamp(20px, 8vw, 80px);
     font-weight:bold;
     margin:0;
     color:#767575;
@@ -39,7 +39,6 @@ body{
 form{
     display:flex;
     flex-direction:column;
-    align-items:stretch; /* mejor que center para inputs full width */
     gap:12px;
     background:white;
     padding:20px;
@@ -47,16 +46,17 @@ form{
     box-shadow:0 2px 5px rgba(0,0,0,0.1);
 }
 
-select,
+/* inputs */
 input{
     width:100%;
     padding:clamp(12px, 3vw, 20px);
     border-radius:8px;
     border:1px solid #ccc;
     box-sizing:border-box;
-    font-size: clamp(20px, 4vw, 40px);
+    font-size:clamp(20px, 4vw, 40px);
 }
 
+/* botones */
 button{
     width:100%;
     background:#4285c8;
@@ -64,7 +64,6 @@ button{
     border:none;
     padding:clamp(14px, 3vw, 20px);
     border-radius:8px;
-    box-sizing:border-box;
     font-size:clamp(20px, 4vw, 40px);
     cursor:pointer;
     transition:background 0.2s ease;
@@ -77,26 +76,22 @@ button:hover{
 h2{
     color:#383737;
     font-size:clamp(20px, 5vw, 40px);
-    margin: 0;
+    margin:0;
 }
+
+/* tabla */
 
 .tabla-responsive{
     overflow-x:auto;
     -webkit-overflow-scrolling:touch;
     background:white;
     border-radius:8px;
-    padding-bottom:clamp(14px, 3vw, 20px);
-    padding: 20px;
+    padding:20px;
 }
 
 .tabla{
     width:100%;
     border-collapse:collapse;
-    background:white;
-    border-radius:10px;
-    overflow:hidden;
-    box-shadow:0 2px 8px rgba(0,0,0,0.05);
-    box-sizing:border-box;
 }
 
 .tabla th{
@@ -104,44 +99,46 @@ h2{
     color:#35383e;
     text-align:left;
     padding:12px;
-    font-size:clamp(10px, 5vw, 30px);
+    font-size:clamp(14px, 4vw, 28px);
 }
 
 .tabla td{
     padding:12px;
     border-top:1px solid #f1f5f9;
-    font-size:clamp(14px, 3vw, 16px);
+    font-size:clamp(14px, 3vw, 18px);
 }
 
 .tabla tr:hover{
     background:#f9fbfd;
 }
 
-.buscador-producto{
-  position: relative;
-  width: 100%;
-}
+/* buscador de productos */
 
-#buscarProducto{
-  width: 100%;
-  padding: 10px;
+.buscador-producto{
+    position:relative;
+    width:100%;
 }
 
 .lista-productos{
-  position: absolute;
-  background: white;
-  border: 1px solid #ccc;
-  width: 100%;
-  max-height: 200px;
-  overflow-y: auto;
-  display: none;
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    background:white;
+    border:1px solid #ccc;
+    border-radius:8px;
+    max-height:200px;
+    overflow-y:auto;
+    display:none;
+    z-index:10;
 }
 
 .item-producto{
-  padding: 10px;
-  cursor: pointer;
+    padding:12px;
+    cursor:pointer;
+    font-size:clamp(18px, 4vw, 30px);
 }
 
 .item-producto:hover{
-  background: #f0f0f0;
+    background:#f0f0f0;
 }
