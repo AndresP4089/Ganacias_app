@@ -1,81 +1,83 @@
-let ventas = []
+let productos = []
+let ventas = JSON.parse(localStorage.getItem("ventas")) || []
 
-// Capturar el formulario
-const form = document.getElementById("formVenta")
-// Crear evento formulario
-form.addEventListener("submit", agregarVenta)
-// Capturar botón
-const boton = document.getElementById("nuevaVenta")
-// Crear evento botón
-boton.addEventListener("click", () => {
-    form.classList.toggle("oculto")
+async function cargarProductos(){
+
+    const res = await fetch("productos.json")
+    productos = await res.json()
+
+    const select = document.getElementById("producto")
+
+    productos.forEach(p=>{
+        const option = document.createElement("option")
+        option.value = p.id
+        option.textContent = p.nombre
+        select.appendChild(option)
+    })
+
+}
+
+function guardarVentas(){
+    localStorage.setItem("ventas", JSON.stringify(ventas))
+}
+
+function registrarVenta(productoId, cantidad){
+
+    const producto = productos.find(p=>p.id == productoId)
+
+    const venta = {
+    fecha: new Date().toLocaleDateString(),
+    producto: producto.nombre,
+    cantidad: cantidad,
+    ganancia: (producto.precio - producto.costo) * cantidad
+    }
+
+    ventas.push(venta)
+
+    guardarVentas()
+
+    render()
+}
+
+function render(){
+
+    const tabla = document.getElementById("tablaVentas")
+    tabla.innerHTML = ""
+
+    let gananciaTotal = 0
+
+    ventas.forEach(v=>{
+
+    gananciaTotal += v.ganancia
+
+    const fila = `
+    <tr>
+    <td>${v.fecha}</td>
+    <td>${v.producto}</td>
+    <td>${v.cantidad}</td>
+    </tr>
+    `
+
+    tabla.innerHTML += fila
+
+    })
+
+    document.getElementById("gananciaTotal").textContent =
+    "$" + gananciaTotal
+}
+
+document.getElementById("formVenta").addEventListener("submit", e=>{
+
+    e.preventDefault()
+
+    const producto = document.getElementById("producto").value
+    const cantidad = document.getElementById("cantidad").value
+
+    registrarVenta(producto, cantidad)
+
+    document.getElementById("cantidad").value = ""
+
 })
 
-function actualizarResumen(){
-
-    let ingresos = 0
-    let costos = 0
-
-    ventas.forEach(v => {
-
-        ingresos += v.precio * v.cantidad
-        costos += v.costo * v.cantidad
-
-    })
-
-    const ganancias = ingresos - costos
-
-    document.getElementById("ingresos").innerText = "$" + ingresos
-    document.getElementById("costos").innerText = "$" + costos
-    document.getElementById("ganancias").innerText = "$" + ganancias
-
-}
-
-function actualizarTabla(){
-
-    const tbody = document.getElementById("tablaVentas")
-
-    let html = ""
-
-    ventas.forEach(v => {
-
-        const ingreso = v.precio * v.cantidad
-        const costo = v.costo * v.cantidad
-        const ganancia = ingreso - costo
-
-        html += `
-        <tr>
-            <td>${v.producto}</td>
-            <td>$${v.precio}</td>
-            <td>${v.cantidad}</td>
-            <td>$${costo}</td>
-            <td>$${ganancia}</td>
-        </tr>
-        `
-    })
-
-    tbody.innerHTML = html
-
-}
-
-function agregarVenta(e){
-    // Evita que recargue la pagina
-    e.preventDefault()
-    
-    const producto = document.getElementById("producto").value
-    const precio = Number(document.getElementById("precio").value)
-    const cantidad = Number(document.getElementById("cantidad").value)
-    const costo = Number(document.getElementById("costo").value)
-
-    ventas.push({
-        producto: producto,
-        precio: precio,
-        cantidad: cantidad,
-        costo: costo
-    })
-
-    actualizarResumen()
-    actualizarTabla()
-
-    form.reset()
-}
+cargarProductos()
+render()
