@@ -46,7 +46,7 @@ function render(){
     let gananciaTotal = 0
 
     // Solo las ultimas 6 ventas
-    const ventasParaMostrar = ventas.slice(-10);
+    const ventasParaMostrar = ventas.slice(-6);
     ventasParaMostrar.forEach(v=>{
 
         gananciaTotal += v.ganancia
