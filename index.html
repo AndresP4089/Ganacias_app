@@ -1,64 +1,48 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Control de Ventas</title>
-        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Ventas Droguería</title>
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
         <div class="container">
 
-            <h1>Resumen</h1>
-
             <div class="cards">
                 <div class="card">
-                    <p id="ganancias">$0</p>
-                    <h2>Ganancias</h2>
-                </div>
-                <div class="card">
-                    <p id="ingresos">$0</p>
-                    <h2>Ingresos</h2>
-                    
-                </div>
-                <div class="card">
-                    <p id="costos">$0</p>
-                    <h2>Costos</h2>
+                    <h1>Ganancias</h1>
+                    <p id="ganancias">$2'000.000</p>
                 </div>
             </div>
 
-            <button id="nuevaVenta" class="boton" type="button">Nueva venta</button>
-
-            <form id="formVenta" class="formulario oculto">
-                <input type="text" id="producto" placeholder="Producto" required>
-
-                <input type="number" id="precio" placeholder="Precio venta" step="0.01" required>
+            <form id="formVenta">
+                <select id="producto"></select>
 
                 <input type="number" id="cantidad" placeholder="Cantidad" required>
 
-                <input type="number" id="costo" placeholder="Costo unitario" step="0.01" required>
-
-                <button type="submit">Agregar venta</button>
+                <button type="submit">Registrar venta</button>
             </form>
-            
-            <h2>Ventas</h2>
 
             <div class="tabla-responsive">
+
+                <h2>Ventas</h2>
+
                 <table class="tabla">
                     <thead>
                         <tr>
+                            <th>Fecha</th>
                             <th>Producto</th>
-                            <th>Precio</th>
                             <th>Cantidad</th>
-                            <th>Costo</th>
-                            <th>Ganancia</th>
                         </tr>
                     </thead>
                     <tbody id="tablaVentas">
                     </tbody>
                 </table>
             </div>
+
         </div>
+
         <script src="script.js"></script>
     </body>
 </html>
