@@ -103,7 +103,7 @@ h2{
     color:#35383e;
     text-align:left;
     padding:12px;
-    font-size:clamp(10px, 4vw, 30px);
+    font-size:clamp(10px, 5vw, 30px);
 }
 
 .tabla td{

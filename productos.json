@@ -1,5 +1,5 @@
 [
-    { "id":1, "nombre":"Camiseta", "precio":20, "costo":10 },
-    { "id":2, "nombre":"Gorra", "precio":12, "costo":5 },
-    { "id":3, "nombre":"Taza", "precio":8, "costo":3 }
+    { "id":1, "nombre":"Paracetamol 500mg", "precio":250, "costo":120 },
+    { "id":2, "nombre":"Vitamina C 1g", "precio":500, "costo":300 },
+    { "id":3, "nombre":"Shampoo 400ml", "precio":650, "costo":400 }
 ]
