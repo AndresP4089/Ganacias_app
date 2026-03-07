@@ -17,7 +17,10 @@
             </div>
 
             <form id="formVenta">
-                <select id="producto"></select>
+                <div class="buscador-producto">
+                    <input type="text" id="buscarProducto" placeholder="Buscar producto..." autocomplete="off">
+                    <div id="listaProductos" class="lista-productos"></div>
+                </div>
 
                 <input type="number" id="cantidad" placeholder="Cantidad" required>
 

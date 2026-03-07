@@ -1,5 +1,9 @@
 let productos = []
 let ventas = JSON.parse(localStorage.getItem("ventas")) || []
+let productoSeleccionado = null;
+
+const inputBuscar = document.getElementById("buscarProducto")
+const lista = document.getElementById("listaProductos")
 
 // Cargar productos
 async function cargarProductos(){
@@ -22,20 +26,27 @@ function guardarVentas(){
 }
 
 // Registrar venta
-function registrarVenta(productoId, cantidad){
-    const producto = productos.find(p=>p.id == productoId)
-    if(!producto) return
+function registrarVenta(cantidad){
+    if(!productoSeleccionado){
+        alert("Selecciona un producto")
+        return;
+    }
+
+    cantidad = Number(cantidad)
 
     const venta = {
         fecha: new Date().toLocaleDateString(),
-        producto: producto.nombre,
+        producto: productoSeleccionado.nombre,
         cantidad: cantidad,
-        ganancia: (producto.precio - producto.costo) * cantidad
+        ganancia: (productoSeleccionado.precio - productoSeleccionado.costo) * cantidad
     }
 
     ventas.push(venta)
     guardarVentas()
     render()
+
+    productoSeleccionado = null;
+    document.getElementById("buscarProducto").value = "";
 }
 
 // Renderizar tabla y ganancia
@@ -90,5 +101,37 @@ document.getElementById("exportarVentas").addEventListener("click", () => {
     a.download = `ventas_${new Date().toISOString().slice(0,10)}.json`
     a.click()
 })
+
+inputBuscar.addEventListener("input", () => {
+
+  const texto = inputBuscar.value.toLowerCase();
+  lista.innerHTML = "";
+
+  if(texto.length === 0){
+    lista.style.display = "none";
+    return;
+  }
+
+  const coincidencias = productos.filter(p =>
+    p.nombre.toLowerCase().includes(texto)
+  );
+
+  coincidencias.forEach(p => {
+
+    const item = document.createElement("div");
+    item.className = "item-producto";
+    item.textContent = p.nombre;
+
+    item.onclick = () => {
+      inputBuscar.value = p.nombre;
+      productoSeleccionado = p;
+      lista.style.display = "none";
+    };
+
+    lista.appendChild(item);
+  });
+
+  lista.style.display = "block";
+});
 
 cargarProductos().then(render)
