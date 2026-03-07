@@ -45,8 +45,9 @@ function registrarVenta(cantidad){
     guardarVentas()
     render()
 
-    productoSeleccionado = null;
-    document.getElementById("buscarProducto").value = "";
+    productoSeleccionado = null
+    document.getElementById("buscarProducto").value = ""
+    lista.innerHTML = ""
 }
 
 // Renderizar tabla y ganancia
@@ -82,11 +83,9 @@ function render(){
 document.getElementById("formVenta").addEventListener("submit", e=>{
 
     e.preventDefault()
-
-    const producto = document.getElementById("producto").value
     const cantidad = document.getElementById("cantidad").value
 
-    registrarVenta(producto, cantidad)
+    registrarVenta(cantidad)
 
     document.getElementById("cantidad").value = ""
 
