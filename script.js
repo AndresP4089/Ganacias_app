@@ -3,7 +3,7 @@ let ventas = JSON.parse(localStorage.getItem("ventas")) || []
 
 async function cargarProductos(){
 
-    const res = await fetch("productos.json")
+    const res = await fetch("./productos.json")
     productos = await res.json()
 
     const select = document.getElementById("producto")
