@@ -169,6 +169,7 @@ document.getElementById("exportarVentas").addEventListener("click", async () => 
 
 })
 
+// Buscador de productos
 inputBuscar.addEventListener("input", () => {
 
   const texto = inputBuscar.value.toLowerCase();
@@ -188,10 +189,10 @@ inputBuscar.addEventListener("input", () => {
     const item = document.createElement("div");
     item.className = "item-producto";
 
-    item.textContent = `${p.nombre} - ${p.marca} - ${p.presentacion}`;
+    item.textContent = `${p.nombre} ${p.marca} - ${p.presentacion}`;
 
     item.onclick = () => {
-      inputBuscar.value = `${p.nombre} - ${p.presentacion}`;
+      inputBuscar.value = `${p.nombre} ${p.marca} - ${p.presentacion}`;
       productoSeleccionado = p;
       lista.style.display = "none";
     };
