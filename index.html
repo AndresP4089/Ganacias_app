@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Ventas Droguería</title>
         <link rel="stylesheet" href="style.css">
@@ -11,8 +12,8 @@
 
             <div class="cards">
                 <div class="card">
-                    <h1>Ganancias</h1>
-                    <p id="gananciaTotal">$0</p>
+                    <h1>Ganancias hoy</h1>
+                    <p id="gananciaHoy">$0</p>
                 </div>
             </div>
 
@@ -48,6 +49,8 @@
 
         </div>
 
+        <script src="https://unpkg.com/dexie@3/dist/dexie.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
         <script src="script.js"></script>
     </body>
 </html>
